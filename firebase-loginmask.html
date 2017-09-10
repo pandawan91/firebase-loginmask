@@ -19,7 +19,7 @@ loginmask webcomponent for firebase-auth
     <paper-input label="email" type="email" hidden$="{{signedIn}}" value="{{email}}"></paper-input>
     <paper-input label="password" type="password" hidden$="{{signedIn}}" value="{{password}}"></paper-input>
     <paper-button raised hidden$="{{signedIn}}" on-click="login">Login</paper-button>
-    <paper-button raised hidden$="!{{signedIn}}" on-click="logout">Logout</paper-button>
+    <paper-button raised hidden$="{{!signedIn}}" on-click="logout">Logout</paper-button>
   </template>
 
   <script>
