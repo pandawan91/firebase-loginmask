@@ -1,0 +1,52 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-input/paper-input.html">
+<!--
+`firebase-loginmask`
+loginmask webcomponent for firebase-auth
+
+@demo demo/index.html
+-->
+
+<dom-module id="firebase-loginmask">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <paper-input label="email" type="email" hidden$="!{{signedIn}}" value="{{email}}"></paper-input>
+    <paper-input label="password" type="password" hidden$="!{{signedIn}}" value="{{password}}"></paper-input>
+    <paper-button raised hidden$="!{{signedIn}}" on-click="login">Login</paper-button>
+    <paper-button raised hidden$="{{signedIn}}" on-click="logout">Logout</paper-button>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'firebase-loginmask',
+
+      properties: {
+        signedIn: {
+          type: Boolean,
+          value: false,
+        },
+        firebaseObject: {
+          type: Object,
+          value: null
+        },
+        email: String,
+        password: String
+      },
+
+      login: function(){
+        this.firebaseObject.signInWithEmailAndPassword(this.email, this.password);
+      },
+
+      logout: function(){
+        this.firebaseObject.signOut();
+      }
+
+    });
+  </script>
+</dom-module>
