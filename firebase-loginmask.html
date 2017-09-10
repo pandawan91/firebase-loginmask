@@ -42,6 +42,8 @@ loginmask webcomponent for firebase-auth
 
       login: function(){
         this.firebaseObject.signInWithEmailAndPassword(this.email, this.password);
+        this.email = "";
+        this.password = "";
       },
 
       logout: function(){
